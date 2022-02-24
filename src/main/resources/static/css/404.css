@@ -1,0 +1,30 @@
+.bg-color {
+    background-color: #007AFF;
+    /* background-color: #0078D4; */
+}
+
+.errorPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+    min-height: 95vh;
+    width: 80%;
+}
+
+.emoji {
+    font-weight: 800;
+    font-size: 56px;
+}
+
+.msg {
+    font-size: 24px;
+}
+
+.white {
+    color: white;
+}
+
+.gray {
+    color: darkgray;
+}

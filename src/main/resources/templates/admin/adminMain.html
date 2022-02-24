@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 메인</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.min.css}">
+    <script th:src="@{/jQuery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/js/api.js}"></script>
+    <title>Hello</title>
+</head>
+
+<body class="bg-color">
+    <div class="login">
+        <!-- 패널 -->
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">관리자 메인</h3>
+            </div>
+
+            <div class="panel-body">
+                <form class="navbar-form navbar-left" role="search" name="loginForm" action="/login" method="post">
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <span th:text="${id} + ' 로그인 되어있음.'"></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="float: right;">
+                                <button type="button" class="btn btn-default mt-10" th:text="로그아웃" th:onclick="location.href='/logout'"></button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

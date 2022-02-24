@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.min.css}">
+    <script th:src="@{/jQuery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/js/api.js}"></script>
+    <title>Hello</title>
+</head>
+
+<body class="bg-color">
+</body>
+
+<script>
+    const url = new URL(window.location.href);
+    const hash = url.hash.split("#")[1];
+
+    if (hash) {
+        var params = hash.split("&");
+        var data = {
+            access_token: '',
+            token_type: '',
+            scope: '',
+            authuser: '',
+            prompt: ''
+        };
+
+        params.find(el => {
+            var tmp = el.split("=");
+            data[tmp[0]] = tmp[1];
+        });
+
+        console.log("data = ", data);
+
+        callFetch(data['access_token']);
+    }
+
+    async function callFetch(access_token) {
+        console.log('callFetch 호출');
+        var api = `https://www.googleapis.com/oauth2/v2/userinfo?access_token=${access_token}`;
+        var options = {
+            method: "GET",
+            headers: {
+                authorization: `token ${access_token}`,
+                accept: 'application/json'
+            }
+        };
+
+        const result = await fetch(api, options)
+        .then((response) => {
+            return response.json();
+        }).catch((err) => {
+            console.error(err);
+        });
+
+        console.log('result = ', result);
+    }
+</script>
+
+</html>

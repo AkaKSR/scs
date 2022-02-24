@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="panelMain">
+
+<head>
+    <title>SCS</title>
+</head>
+
+<!-- 페이지의 개별적인 css -->
+<th:block layout:fragment="css">
+</th:block>
+
+<div class="container-fluid" th:fragment="serverList">
+    <div>
+        <ul class="list-group mt-10" th:each="s : ${serverList}">
+            <li class="list-group-item">
+                <table class="table-full">
+                    <tr>
+                        <td class="table-icon">
+                            <img th:src="@{/assets/수정됨_monitor.png}">
+                        </td>
+
+                        <td class="table-desc">
+                            <div class="ml-10">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <span th:text="'Name: ' + ${s.server_nm}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span th:text="'Host: ' + ${s.server_ip}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span th:text="'Desc: ' + ${s.server_desc}"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+
+                        <td class="table-btn">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                                </button>
+                                <button type="button" class="btn btn-default" th:server="${s}"
+                                    th:onclick="showModal('serverLog', this.getAttribute('server'))">
+                                    <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span>
+                                </button>
+                                <button type="button" class="btn btn-default" th:onclick="showModal('settings')">
+                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.min.css}">
+    <script th:src="@{/jQuery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/js/api.js}"></script>
+    <title>Hello</title>
+</head>
+
+<body class="bg-color">
+    <div class="login">
+        <!-- 로그인 패널 -->
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">로그인</h3>
+            </div>
+
+            <div class="panel-body">
+                <form class="navbar-form navbar-left" role="search" name="loginForm">
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <input type="text" class="form-control" placeholder="ID" name="id" value="" id="id"
+                                    autocomplete="username">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <input type="password" class="form-control mt-10" placeholder="Password" name="pwd"
+                                    value="" id="pwd" autocomplete="current-password">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-default mt-10" th:text="회원가입" style="float: left;"
+                                    th:onclick="moveTo('/register')"></button>
+                            </td>
+
+                            <td style="float: right;">
+                                <button type="button" class="btn btn-default mt-10" th:text="로그인"
+                                    th:onclick="login()"></button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // ID 항목 키 이벤트
+    $("#id").keypress(function (event) {
+        if (event.keyCode == 13) {
+            $("#pwd").focus();
+        }
+    });
+
+    // 비밀번호 항목 키 이벤트
+    $("#pwd").keypress(function (event) {
+        if (event.keyCode == 13) {
+            login();
+        }
+    });
+</script>
+
+</html>

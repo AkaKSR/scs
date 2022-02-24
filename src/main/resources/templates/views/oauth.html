@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.min.css}">
+    <script th:src="@{/jQuery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/js/api.js}"></script>
+    <title>Hello</title>
+</head>
+
+<body class="bg-color">
+    <div>
+        <button id="oAuthBtn" th:onclick=""></button>
+    </div>
+</body>
+
+<script>
+    const oAuthURL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=492353498157-00g3t9dpmfbue599lhogskkr84ste0ot.apps.googleusercontent.com&response_type=token&redirect_uri=http://scs.akaksr.xyz:8080/test&scope=https://www.googleapis.com/auth/userinfo.email`;
+
+    window.location.assign(oAuthURL);
+</script>
+
+</html>

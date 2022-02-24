@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>500 Internal Server Error</title>
+    <link rel="stylesheet" th:href="@{/css/404.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.min.css}">
+    <script th:src="@{/jQuery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+    </link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body class="bg-color">
+    <div class="errorPage">
+        <label>
+            <div id="kr" style="display:none">
+                <p class="emoji white">(╯> △<)╯︵┻━┻ </p><br/><br/>
+                <p class="white msg">어디에 접속하고 싶은겁니까? 휴먼?</p><br/>
+                <p class="gray">아니면 지금 페이지는 수정중일지도...</p><br/>
+            </div>
+
+            <div id="us" style="display:none">
+                <p class="emoji white">(╯> △<)╯︵┻━┻ </p>
+                <p class="white msg">The page you are currently accessing does not exist.<br />Please check again.</p>
+                <p class="gray">This page may be being edited...</p>
+            </div>
+
+            <div>
+                <span class="white msg">err_code: 500_INTERNAL_SERVER_ERROR_OR_I_AM_N00B</span><br />
+                <span class="white msg" id="ipAddr"></span>
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-default mt-10" th:text="Back" th:onclick="goBack()"></button>
+            </div>
+        </label>
+    </div>
+
+    <script th:src="@{/js/getIpLang.js}"></script>
+</body>
+
+</html>

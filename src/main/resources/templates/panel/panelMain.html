@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="content">
+
+<head>
+    <title>SCS</title>
+</head>
+
+<!-- 페이지의 개별적인 css -->
+<th:block layout:fragment="css">
+    <!-- <link rel="stylesheet" href="css/content1.css" /> -->
+</th:block>
+
+<div class="container-fluid" th:fragment="panelMain">
+    <div class="row">
+        <!-- DashBoard -->
+        <div class="contents">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title" id="panel-title" th:text="${panelTitle}"></h3>
+                </div>
+
+                <!-- <div class="panel-body" id="panel-body" th:text="${panelTitle}">
+                </div> -->
+                <div th:replace="${fragment} :: ${content}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

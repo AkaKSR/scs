@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.akaksr.scs.mapper.CommonMapper">
+    <select id="login" resultType="LoginVo" parameterType="Map">
+        SELECT
+            USER_IDX, GROUP_IDX, USER_ID, USER_PWD, USER_NM, CREATED_DT, CONFIRM
+        FROM
+            user_info
+        WHERE
+            USER_ID = #{id}
+            AND
+            USER_PWD = PASSWORD(#{pwd});
+    </select>
+
+    <insert id="register" parameterType="HashMap">
+        INSERT INTO user_info (USER_ID, USER_PWD, USER_NM) 
+        VALUES
+        (#{USER_ID}, PASSWORD(#{USER_PWD}), #{USER_NM}) ;
+    </insert>
+</mapper>

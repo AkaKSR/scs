@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>가입</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.min.css}">
+    <script th:src="@{/jQuery/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/js/api.js}"></script>
+    </link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body class="bg-color">
+    <div class="login">
+        <!-- 로그인 패널 -->
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">회원가입</h3>
+            </div>
+            <div class="panel-body">
+                <form class="navbar-form navbar-left" role="search">
+                    <table>
+                        <tr>
+                            <td>
+                                <span class="label label-default" style="font-size: 16px;">ID:</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control input" placeholder="ID" id="user_id"
+                                    autocomplete="username">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span class="label label-default" style="font-size: 16px;">Password:</span>
+                            </td>
+                            <td>
+                                <input type="password" class="form-control mt-10 input" placeholder="Password"
+                                    id="user_pwd" autocomplete="current-password">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span class="label label-default" style="font-size: 16px;">사용자 이름:</span>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control mt-10 input" placeholder="UserName" id="user_nm">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2">
+                                <button type="button" class="btn btn-default mt-10" th:text="취소"
+                                    th:onclick="moveTo('/')"></button>
+                                <button type="submit" class="btn btn-default mt-10" th:text="가입" style="float: right;"
+                                    th:onclick="register()"></button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // ID 항목 한글 입력 방지
+    $("#user_id").keyup(function (event) {
+        if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
+            var inputVal = $(this).val();
+            var check = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+            if (check.test(inputVal)) {
+                $(this).val("");
+            }
+        }
+    });
+</script>
+
+</html>

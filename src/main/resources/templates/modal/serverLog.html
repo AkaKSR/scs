@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="index">
+
+<head>
+    <title>SCS</title>
+</head>
+
+<!-- 페이지의 개별적인 css -->
+<th:block layout:fragment="css">
+</th:block>
+
+<div class="container-fluid" th:fragment="logModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true"></span></button>
+            <h4 class="modal-title" id="myModalLabel" th:text="'로그 모달'"></h4>
+        </div>
+        <div class="modal-body" id="modalContents">
+            <div id="serverLogin">
+                <input type="text" class="input-form" placeholder="Username" id="username">
+                <input type="password" class="input-form" placeholder="Password" id="password">
+                <button type="button" class="btn btn-default" th:text="'접속'" th:onclick="getData()"
+                    id="connBtn"></button>
+            </div>
+            <div id="logContents" >
+                <label>서버 로그인을 해주시기 바랍니다.</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">확인</button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalBox">취소</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function getData() {
+        var btn = $("#connBtn");
+        btn.attr("disabled", true);
+
+        var id = $("#username").val();
+        var pass = $("#password").val();
+
+        var el = $("#logContents");
+
+        el.ready(async function () {
+            el.html("<label>로그를 생성중입니다...</label>");
+            var data = await getLog(attrValue, id, pass);
+            var result = await displayLog(data);
+
+            el.html(result);
+            btn.attr("disabled", false);
+        });
+    }
+
+    function displayLog(data) {
+        var tmp = data.split('\n');
+
+        for (var i = 0; i < tmp.length; i++) {
+            tmp[i] = `<label>${tmp[i]}</label>`;
+        }
+
+        return tmp.join("<br/>");
+    }
+</script>
+
+</html>

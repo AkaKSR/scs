@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="content">
+
+<head>
+    <title>SCS</title>
+</head>
+
+<!-- 페이지의 개별적인 css -->
+<th:block layout:fragment="css">
+</th:block>
+
+<div class="container-fluid" th:fragment="sideMenu">
+    <div class="row">
+        <!-- MenuBar -->
+        <div class="menu sidebar" id="menu">
+            <ul class="nav nav-sidebar nav-item">
+                <li><a href="#" th:text="'대시 보드'" id="dashboard" th:onclick="loadContent('/main', 'panel', 'dashBoard')"></a></li>
+                <li><a href="#" th:text="'서버 목록'" id="serverList" th:onclick="loadContent('/main', 'list', 'serverList')"></a></li>
+                <li><a href="#" th:text="'서비스 목록'" id="serviceList" th:onclick="loadContent('/main', 'list', 'serviceList')"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</html>
