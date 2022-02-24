@@ -1,4 +1,4 @@
-package xyz.akaksr.springboot;
+package xyz.akaksr.scs;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
