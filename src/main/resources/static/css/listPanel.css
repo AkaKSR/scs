@@ -19,3 +19,7 @@
 .list-group-item:hover {
     background-color: #eee;
 }
+
+#serverListBtn {
+    margin-top: 10px;
+}

@@ -34,15 +34,16 @@ JSch 0.1.55
 
 ```properties
 ## /src/main/resources/application.properties
+# 서버 첫 실행 시 자동으로 DB세팅이 진행되므로 DB명칭(schemas)는 건들면 안됩니다.
 
 ## DB 설정
-spring.datasource.url=jdbc:mysql://DB서버 주소:포트/DB명?autoReconnect=true&characterEncoding=UTF-8&serverTimezone=UTC
+spring.datasource.url=jdbc:mysql://DB서버 주소:포트/scs?autoReconnect=true&characterEncoding=UTF-8&serverTimezone=UTC
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 
 ## Flyway 설정
 # Flyway를 통하여 초기 DB 구조를 구성을 하기에 반드시 설정하여야 합니다.
 spring.flyway.url=jdbc:mysql://DB서버 주소:포트/
-spring.flyway.schemas=DB명
+spring.flyway.schemas=scs
 spring.flyway.user=DB 계정
 spring.flyway.password=DB 계정 비밀번호
 spring.flyway.locations=filesystem:src/main/resources/db/migration/

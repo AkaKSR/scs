@@ -19,6 +19,10 @@ function showModal(modalNm, attr) {
         case "settings":
             $("#modalContents").html("설정 모달");
             break;
+
+        case "serverAdd":
+            $("#modalContents").html("서버 추가");
+            break;
     }
 
     $('#modalBox').modal('show');

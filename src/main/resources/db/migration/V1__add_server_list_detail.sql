@@ -1,8 +1,9 @@
 /*
 SQLyog Ultimate v12.09 (64 bit)
-MySQL - 10.6.5-MariaDB : Database - springboot
+MySQL - 10.6.5-MariaDB : Database - scs
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -12,9 +13,9 @@ MySQL - 10.6.5-MariaDB : Database - springboot
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`springboot` /*!40100 DEFAULT CHARACTER SET utf8mb3 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`scs` /*!40100 DEFAULT CHARACTER SET utf8mb3 */;
 
-USE `springboot`;
+USE `scs`;
 
 /*Table structure for table `server_list_detail` */
 

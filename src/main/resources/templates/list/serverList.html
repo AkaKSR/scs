@@ -11,6 +11,15 @@
 </th:block>
 
 <div class="container-fluid" th:fragment="serverList">
+    <div id="serverListBtn" class="btn-group">
+        <button type="button" class="btn btn-default" th:onclick="showModal('serverAdd')">
+            <span class="glyphicon glyphicon-plus-sign"> 서버추가</span>
+        </button>
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-minus-sign"> 서버제거</span>
+        </button>
+    </div>
+
     <div>
         <ul class="list-group mt-10" th:each="s : ${serverList}">
             <li class="list-group-item">

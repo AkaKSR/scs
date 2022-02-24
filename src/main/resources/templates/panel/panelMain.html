@@ -17,11 +17,9 @@
         <div class="contents">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title" id="panel-title" th:text="${panelTitle}"></h3>
+                    <label class="panel-title" id="panel-title" th:text="${panelTitle}"></label>
                 </div>
 
-                <!-- <div class="panel-body" id="panel-body" th:text="${panelTitle}">
-                </div> -->
                 <div th:replace="${fragment} :: ${content}"></div>
             </div>
         </div>
