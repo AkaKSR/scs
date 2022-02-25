@@ -105,7 +105,7 @@ CREATE TABLE `user_info` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `user_info` */
-
+/*관리자 및 테스트 계정 생성*/
 insert  into `user_info`(`USER_IDX`,`GROUP_IDX`,`USER_ID`,`USER_PWD`,`USER_NM`,`CREATED_DT`,`CONFIRM`) values (1,'0000','admin','*4ACFE3202A5FF5CF467898FC58AAB1D615029441','관리자','2022-02-03 16:45:10',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
