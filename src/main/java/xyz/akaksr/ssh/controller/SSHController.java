@@ -30,7 +30,6 @@ public class SSHController {
         return session;
     }
 
-    // public void exec(Session session, String command) {
     public String exec(Session session, String command) {
         logger.info("exec 호출");
 
@@ -50,7 +49,7 @@ public class SSHController {
                 response.append(new String(buffer, 0, decodedLength));
             }
 
-            // logger.info("결과값 = " + response.toString());
+            logger.info("결과값 = " + response.toString());
 
             return response.toString();
         } catch (JSchException e) {

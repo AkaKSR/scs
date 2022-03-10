@@ -16,16 +16,23 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                     aria-hidden="true"></span></button>
             <h4 class="modal-title" id="myModalLabel" th:text="'로그 모달'"></h4>
+            <div th:text="${test}"></div>
         </div>
         <div class="modal-body" id="modalContents">
             <div id="serverLogin">
                 <input type="text" class="input-form" placeholder="Username" id="username">
                 <input type="password" class="input-form" placeholder="Password" id="password">
-                <button type="button" class="btn btn-default" th:text="'접속'" th:onclick="getData()"
-                    id="connBtn"></button>
+                <div class="input-group mt-10">
+                    <button type="button" class="btn btn-default btn-radius-4 dropdown-toggle" data-toggle="dropdown"
+                        id="connBtn" aria-expanded="false">접속 <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li th:each="list : ${cmdList}"><a href="#" th:text="${list.command_nm}"
+                                th:onclick="getData([[${list.command}]])"></a></li>
+                    </ul>
+                </div>
             </div>
-            <div id="logContents" >
-                <label>서버 로그인을 해주시기 바랍니다.</label>
+            <div id="logContents">
+                <pre class="language-md"><code class="language-md">서버 로그인을 해주시기 바랍니다.</code></pre>
             </div>
         </div>
         <div class="modal-footer">
@@ -36,7 +43,7 @@
 </div>
 
 <script>
-    function getData() {
+    function getData(cmd) {
         var btn = $("#connBtn");
         btn.attr("disabled", true);
 
@@ -46,8 +53,8 @@
         var el = $("#logContents");
 
         el.ready(async function () {
-            el.html("<label>로그를 생성중입니다...</label>");
-            var data = await getLog(attrValue, id, pass);
+            el.html(`<pre class="language-md"><code class="language-md">로그를 생성중입니다...</code></pre>`);
+            var data = await getLog(attrValue, id, pass, cmd);
             var result = await displayLog(data);
 
             el.html(result);
@@ -56,13 +63,7 @@
     }
 
     function displayLog(data) {
-        var tmp = data.split('\n');
-
-        for (var i = 0; i < tmp.length; i++) {
-            tmp[i] = `<label>${tmp[i]}</label>`;
-        }
-
-        return tmp.join("<br/>");
+        return `<pre class="language-md"><code class="language-md">${data}</code></pre>`;
     }
 </script>
 

@@ -2,8 +2,7 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 10.6.5-MariaDB : Database - scs
 *********************************************************************
-*/
-
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -33,26 +32,18 @@ CREATE TABLE `accnt_group` (
 
 insert  into `accnt_group`(`GROUP_IDX`,`GROUP_NM`,`DESCRIPTION`) values ('0000','Administrator','관리자'),('0001','User','일반 사용자');
 
-/*Table structure for table `flyway_schema_history` */
+/*Table structure for table `server_cmd_list` */
 
-DROP TABLE IF EXISTS `flyway_schema_history`;
+DROP TABLE IF EXISTS `server_cmd_list`;
 
-CREATE TABLE `flyway_schema_history` (
-  `installed_rank` int(11) NOT NULL,
-  `version` varchar(50) DEFAULT NULL,
-  `description` varchar(200) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `script` varchar(1000) NOT NULL,
-  `checksum` int(11) DEFAULT NULL,
-  `installed_by` varchar(100) NOT NULL,
-  `installed_on` timestamp NOT NULL DEFAULT current_timestamp(),
-  `execution_time` int(11) NOT NULL,
-  `success` tinyint(1) NOT NULL,
-  PRIMARY KEY (`installed_rank`),
-  KEY `flyway_schema_history_s_idx` (`success`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `server_cmd_list` (
+  `SERVER_IDX` int(100) NOT NULL COMMENT '서버 키값',
+  `COMMAND` longtext NOT NULL COMMENT '구동시킬 명령어',
+  `COMMAND_NM` varchar(30) NOT NULL COMMENT '명령어 명칭',
+  PRIMARY KEY (`SERVER_IDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `flyway_schema_history` */
+/*Data for the table `server_cmd_list` */
 
 /*Table structure for table `server_group` */
 
@@ -78,15 +69,26 @@ CREATE TABLE `server_list` (
   `SERVER_IDX` int(100) NOT NULL AUTO_INCREMENT COMMENT '서버 키값',
   `GROUP_IDX` varchar(4) NOT NULL DEFAULT '0001' COMMENT '서버 그룹 키값',
   `USER_IDX` int(100) NOT NULL COMMENT '사용자 키값',
-  `SERVER_NM` varchar(60) CHARACTER SET utf8mb3 NOT NULL COMMENT '서버 명칭',
-  `SERVER_IP` varchar(90) CHARACTER SET utf8mb3 NOT NULL COMMENT '서버 IP',
-  `SERVER_DESC` text CHARACTER SET utf8mb3 DEFAULT NULL COMMENT '서버 설명',
   `CREATED_DT` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '생성 일자',
   `STATUS_CD` int(1) NOT NULL DEFAULT 0 COMMENT '상태 코드(0:종료/1:시동/9:에러)',
   PRIMARY KEY (`SERVER_IDX`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `server_list` */
+
+/*Table structure for table `server_list_detail` */
+
+DROP TABLE IF EXISTS `server_list_detail`;
+
+CREATE TABLE `server_list_detail` (
+  `SERVER_IDX` int(100) NOT NULL COMMENT '서버 키값',
+  `SERVER_NM` varchar(60) NOT NULL COMMENT '서버 명칭',
+  `SERVER_IP` varchar(90) NOT NULL COMMENT '서버 IP',
+  `SERVER_DESC` text DEFAULT NULL COMMENT '서버 설명',
+  PRIMARY KEY (`SERVER_IDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `server_list_detail` */
 
 /*Table structure for table `user_info` */
 
@@ -105,8 +107,8 @@ CREATE TABLE `user_info` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `user_info` */
-/*관리자 및 테스트 계정 생성*/
-insert  into `user_info`(`USER_IDX`,`GROUP_IDX`,`USER_ID`,`USER_PWD`,`USER_NM`,`CREATED_DT`,`CONFIRM`) values (1,'0000','admin','*4ACFE3202A5FF5CF467898FC58AAB1D615029441','관리자','2022-02-03 16:45:10',1);
+
+insert  into `user_info`(`USER_IDX`,`GROUP_IDX`,`USER_ID`,`USER_PWD`,`USER_NM`,`CREATED_DT`,`CONFIRM`) values (1,'0000','admin','*4ACFE3202A5FF5CF467898FC58AAB1D615029441','관리자','2022-02-25 16:29:24',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

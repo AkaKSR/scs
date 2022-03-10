@@ -56,7 +56,7 @@ async function register() {
     }
 }
 
-async function getLog(server, id, pass) {
+async function getLog(server, id, pass, cmd) {
     console.log('getLog 호출');
 
     var api = '/api/getlog';
@@ -65,7 +65,8 @@ async function getLog(server, id, pass) {
         body: new URLSearchParams({
             server,
             id,
-            pass
+            pass,
+            cmd
         })
     };
 
@@ -78,4 +79,10 @@ async function getLog(server, id, pass) {
         });
 
     return result;
+}
+
+async function addServer() {
+    var server_nm;
+    var server_ip;
+    var server_desc;
 }

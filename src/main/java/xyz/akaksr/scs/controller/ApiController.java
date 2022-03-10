@@ -75,12 +75,17 @@ public class ApiController {
     @PostMapping("/getlog")
     public Object getServerInfo(HttpServletRequest request) {
         String serverData = request.getParameter("server");
-        ConvertHashMap convert = new ConvertHashMap(serverData);
-
-        HashMap<String, String> hashMap = convert.getData();
+        HashMap<String, String> hashMap = new ConvertHashMap(serverData).getData();
 
         String username = request.getParameter("id");
         String password = request.getParameter("pass");
+        String server_idx = hashMap.get("server_idx");
+        String cmd = request.getParameter("cmd");
+
+        logger.info("cmd = " + cmd);
+
+        // HashMap<String, Object> serverMap = serverService.getServerData(server_idx);
+        // logger.info("serverMap = " + serverMap.toString());
 
         SSHVo vo = new SSHVo(username, hashMap.get("server_ip"), 22, password);
         SSHController ssh = new SSHController();
@@ -88,12 +93,13 @@ public class ApiController {
 
         try {
             Session session = ssh.connectSSH(vo);
-            result = ssh.exec(session, "ls -al");
+            // logger.info("COMMAND = " + serverMap.get("COMMAND"));
+            // result = ssh.exec(session, serverMap.get("COMMAND").toString());
+            logger.info("COMMAND = " + cmd);
+            result = ssh.exec(session, cmd);
         } catch (JSchException e) {
             result = "서버 연결 오류 발생\n" + e.getMessage();
         }
-
-        logger.info(result);
 
         return result;
     }

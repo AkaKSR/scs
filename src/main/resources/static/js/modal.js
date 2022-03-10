@@ -9,7 +9,13 @@ function showModal(modalNm, attr) {
     modal = modalNm;
     attrValue = attr;
     
-    loadModalSrc(modalNm);
+    if (attr != undefined) {
+        var json = vo2Json(attr);
+        loadModalSrc(modalNm, json.server_idx);
+    } else {
+        loadModalSrc(modalNm);
+    }
+
 
     switch (modalNm) {
         case "serverLog":
@@ -32,8 +38,15 @@ function closeModal() {
     $('#modalBox').modal('hide');
 }
 
-async function loadModalSrc(modalNm) {
-    const api = `/loadsrc?page=${modalNm}`;
+async function loadModalSrc(modalNm, server_idx) {
+    console.log("loadModalSrc 호출");
+    var api = `/loadsrc?page=${modalNm}`;
+    console.log("server_idx = ", server_idx);
+
+    if (server_idx != undefined) {
+        api += `&server_idx=${server_idx}`
+    }
+
     const option = {
         method: "GET"
     };

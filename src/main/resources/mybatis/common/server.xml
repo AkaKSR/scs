@@ -2,6 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="xyz.akaksr.scs.mapper.CommonMapper">
     <select id="getServerList" resultType="ServerVo">
-        SELECT * FROM server_list ;
+        SELECT 
+            list.*,
+            detail.SERVER_NM,
+            detail.SERVER_IP,
+            detail.SERVER_DESC
+        FROM
+            server_list AS `list` 
+            LEFT JOIN server_list_detail AS `detail` 
+                ON list.SERVER_IDX = detail.SERVER_IDX
+        WHERE
+            list.USER_IDX = ${user_idx}
+    </select>
+
+    <select id="getServerData" resultType="HashMap" parameterType="String">
+        SELECT
+            list.SERVER_IDX,
+            list.STATUS_CD,
+            detail.SERVER_NM,
+            detail.SERVER_IP
+        FROM
+            server_list AS `list`
+            LEFT JOIN server_list_detail AS `detail`
+                ON list.SERVER_IDX = detail.SERVER_IDX
+        WHERE 1 = 1
+            AND list.SERVER_IDX = ${server_idx} ;
+    </select>
+
+    <select id="getCmdList" resultType="CmdVo">
+        SELECT
+            COMMAND,
+            COMMAND_NM
+        FROM
+            server_cmd_list
+        WHERE SERVER_IDX = ${server_idx} ;
     </select>
 </mapper>

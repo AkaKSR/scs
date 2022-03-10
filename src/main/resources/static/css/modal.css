@@ -9,26 +9,6 @@
     overflow: scroll;
 }
 
-/* 로그 화면 스타일 */
-#logContents {
-    margin-top: 10px;
-    border: 1px solid #e5e5e5;
-    border-radius: 5px;
-}
-
-/* 로그 간격 스타일 */
-#logContents > label {
-    margin-left: 6px;
-}
-
-#logContents > label:nth-child(1) {
-    margin-top: 6px;
-}
-
-#logContents > label:last-child {
-    margin-bottom: 6px;
-}
-
 /* input 스타일 */
 #username {
     width: 200px;
@@ -47,4 +27,9 @@
     border-radius: 4px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+/* btn group 스타일 */
+.btn-radius-4 {
+    border-radius: 4px;
 }
